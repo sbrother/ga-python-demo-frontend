@@ -1,0 +1,52 @@
+#:kivy 1.4.1
+
+<SeparatorBar>:
+    canvas:
+        Color:
+            rgb: [0.267, 0.573, 0.749]
+        Rectangle:
+            pos: root.pos
+            size: root.size
+
+<MainInterface>:
+    text_input: text_input
+
+    # Black background to see through the translucent rectangle
+    canvas:
+        Color:
+            rgb: (0, 0, 0)
+        Rectangle:
+            pos: root.pos
+            size: root.size
+        Color:
+            rgba: root.background_color
+        Rectangle:
+            pos: root.pos
+            size: root.size
+
+    BoxLayout:
+        orientation: 'vertical'
+        pos: root.pos
+        size: root.size
+        padding: 20
+        spacing: 20	
+        Label:
+            text: "Sentiment Demo"
+            size_hint: (1, None)
+            height: 40
+        SeparatorBar:
+            size_hint: (1, None)
+            height: 5
+        TextInput:
+            id: text_input
+            size_hint: (1, None)
+            height: 300
+        Button:
+            text: "Go!"
+            size_hint: (1, None)
+            height: 60
+            on_release:
+                root.go_button_pressed()
+        Widget:
+            size_hint: (1, 1)
+            
