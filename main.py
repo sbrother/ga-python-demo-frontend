@@ -2,6 +2,8 @@ from kivy.uix.widget import Widget
 from kivy.lang import Builder
 from kivy.animation import Animation
 from kivy.config import Config
+from kivy.uix.label import Label
+from kivy.uix.popup import Popup
 from kivy.properties import ObjectProperty, ListProperty
 from kivy.core.window import Window
 
@@ -36,7 +38,10 @@ class MainInterface(Widget):
         try:
             sentiment = get_sentiment(current_text)
         except IOError:
-            popup = Popup(title='Error', content=Label(text='Server Error!'))
+            popup = Popup(title='Error', 
+                          content=Label(text='Server Error!'),
+                          size_hint = (None, None),
+                          size = (300, 200))
             popup.open()
             return
         if sentiment is None:
